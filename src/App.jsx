@@ -1,21 +1,34 @@
-import React from "react";
-import './App.scss';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Topbar from './components/Topbar';
-import Stories from './components/Stories';
-import Feed from './components/Feed';
+import Feed from './routes/Feed';
+import Users from './routes/Users';
+import NewUser from './routes/NewUser';
 
+import './App.scss';
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-      <Topbar />
-      <Stories />
-      <Feed />
-      
-      </React.Fragment>
-    );
+      <BrowserRouter>
+        <Topbar />
+
+        <Switch>
+          <Route exact path="/">
+            <Feed />
+          </Route>
+
+          <Route path="/users">
+            <Users />
+          </Route>
+
+          <Route path="/newuser">
+            <NewUser />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    )
   }
 }
 
